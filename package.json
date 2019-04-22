@@ -1,0 +1,19 @@
+{
+  "name": "hands-on-rxjs-for-web",
+  "version": "1.0.0",
+  "description": "This repo contains the code that I develop while watching Hands-on RXJS for the Web Development. It's a NPM project unlike the one offered by the course.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbgdn/hands-on-rxjs-for-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tbgdn/hands-on-rxjs-for-web/issues"
+  },
+  "homepage": "https://github.com/tbgdn/hands-on-rxjs-for-web#readme"
+}
