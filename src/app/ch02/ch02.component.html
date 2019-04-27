@@ -1,3 +1,54 @@
 <div class="container-fluid">
   <h3>Chapter 02</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-outline-primary mr-2" (click)="manualCreationExample()">Manual creation</button>
+      <button class="btn btn-outline-primary mr-2" (click)="deferExample()">Defer</button>
+      <button class="btn btn-outline-primary mr-2" (click)="moreBuiltInsExample()">Built-ins</button>
+      <button class="btn btn-outline-primary mr-2" (click)="hotAndColdExample()">Hot and cold</button>
+      <button class="btn btn-outline-primary mr-2" (click)="subjectsExample()">Subjects</button>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <h6>Step switcher</h6>
+      <div>
+        <button *ngFor="let option of stepOptions"
+                (click)="stepClick(option)"
+                [ngClass]="{active: stepSize == option}"
+                class="btn btn-outline-primary mr-2">{{option}}</button>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <h6>Counter</h6>
+      <h4>{{counter}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <app-step-switcher class="col-md-2"></app-step-switcher>
+    <app-counter class="col-md-2"></app-counter>
+    <app-counter class="col-md-2"></app-counter>
+    <app-counter class="col-md-2"></app-counter>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-danger" (click)="clearSubscriptions()">Stop</button>
+    </div>
+  </div>
 </div>

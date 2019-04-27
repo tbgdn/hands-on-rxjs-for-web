@@ -1,0 +1,9 @@
+<div>
+  <h6>Step switcher</h6>
+  <div>
+    <button *ngFor="let option of stepOptions"
+            (click)="stepClick(option)"
+            [ngClass]="{active: stepSize == option}"
+            class="btn btn-outline-primary mr-2">{{option}}</button>
+  </div>
+</div>

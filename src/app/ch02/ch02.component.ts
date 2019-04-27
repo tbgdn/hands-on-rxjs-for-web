@@ -1,6 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ConnectableObservable, defer, interval, Observable, of, range, Subscription, timer} from 'rxjs';
-import {publish, publishReplay, take} from 'rxjs/operators';
+import {
+  AsyncSubject,
+  ConnectableObservable,
+  defer,
+  interval,
+  Observable,
+  of,
+  range,
+  Subject,
+  Subscription,
+  timer
+} from 'rxjs';
+import {publishReplay, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-ch02',
@@ -9,13 +20,21 @@ import {publish, publishReplay, take} from 'rxjs/operators';
 })
 export class Ch02Component implements OnInit, OnDestroy {
   subs: Subscription[] = [];
-  constructor() { }
+  private stepSize: number = 1;
+  private counter: number = 0;
+  private stepSwitcher: Subject<number>;
+  private stepOptions = [1, 5];
+  constructor() {}
 
   ngOnInit() {
-    this.manualCreationExample();
-    this.deferExample();
-    this.moreBuiltInsExample();
-    this.hotAndColdExample();
+    this.stepSwitcher = new Subject();
+    this.stepSwitcher.asObservable().subscribe((step) => {
+      console.log(`New step size: ${step}`);
+      this.stepSize = step;
+    });
+    setInterval(() => {
+      this.counter = this.counter + this.stepSize;
+    }, 1000);
   }
 
   manualCreationExample() {
@@ -68,7 +87,40 @@ export class Ch02Component implements OnInit, OnDestroy {
     }, 4000);
   }
 
-  ngOnDestroy() {
+  subjectsExample() {
+    //const source$ = new Subject();
+    //const source$ = new ReplaySubject(3);
+    //const source$ = new BehaviorSubject(-1);
+    const source$ = new AsyncSubject();
+
+    let counter = 0;
+    const sourceIntervalId = setInterval(() => {
+      console.log(`source$ value: ${counter}`);
+      source$.next(counter++);
+    }, 1000);
+
+    source$.subscribe((data) => console.log(`Observer 1: ${data}`));
+    setTimeout(() => source$.subscribe((data) => console.log(`Observer 2: ${data}`)), 2500);
+
+    setTimeout(() => {
+      source$.complete();
+      clearInterval(sourceIntervalId);
+    }, 5000);
+  }
+
+  ngRxStoreExample() {
+
+  }
+
+  stepClick(step: number) {
+    this.stepSwitcher.next(step);
+  }
+
+  clearSubscriptions() {
     this.subs.map(s => s.unsubscribe());
+  }
+
+  ngOnDestroy() {
+    this.clearSubscriptions();
   }
 }
