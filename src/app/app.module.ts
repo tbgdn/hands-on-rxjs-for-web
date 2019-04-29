@@ -10,6 +10,7 @@ import { CounterComponent } from './ch02/counter/counter.component';
 import { StepSwitcherComponent } from './ch02/step-switcher/step-switcher.component';
 import {StoreModule} from '@ngrx/store';
 import {StepSwitcherReducer} from './ch02/step-switcher/step-switcher.reducer';
+import { Ch04Component } from './ch04/ch04.component';
 
 const reducers = {
   stepValue: StepSwitcherReducer
@@ -22,7 +23,8 @@ const reducers = {
     Ch02Component,
     Ch03Component,
     CounterComponent,
-    StepSwitcherComponent
+    StepSwitcherComponent,
+    Ch04Component
   ],
   imports: [
     BrowserModule,
