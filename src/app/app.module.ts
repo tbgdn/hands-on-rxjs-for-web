@@ -11,6 +11,11 @@ import { StepSwitcherComponent } from './ch02/step-switcher/step-switcher.compon
 import {StoreModule} from '@ngrx/store';
 import {StepSwitcherReducer} from './ch02/step-switcher/step-switcher.reducer';
 import { Ch04Component } from './ch04/ch04.component';
+import { AutoCompleteComponent } from './ch04/auto-complete/auto-complete.component';
+import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
+import { MergeMapDemoComponent } from './ch04/merge-map-demo/merge-map-demo.component';
+import { MergeScanDemoComponent } from './ch04/merge-scan-demo/merge-scan-demo.component';
+import { MergeMapDelayedComponent } from './ch04/merge-map-delayed/merge-map-delayed.component';
 
 const reducers = {
   stepValue: StepSwitcherReducer
@@ -24,11 +29,17 @@ const reducers = {
     Ch03Component,
     CounterComponent,
     StepSwitcherComponent,
-    Ch04Component
+    Ch04Component,
+    AutoCompleteComponent,
+    MergeMapDemoComponent,
+    MergeScanDemoComponent,
+    MergeMapDelayedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [],

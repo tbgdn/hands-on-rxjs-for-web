@@ -1,27 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  AsyncSubject,
-  ConnectableObservable,
-  defer, EMPTY, empty, from,
-  interval,
-  Observable,
-  of,
-  range,
-  Subject,
-  Subscription,
-  timer
-} from 'rxjs';
+import {EMPTY, from, interval, of, Subscription, timer} from 'rxjs';
 import {
   buffer,
-  bufferCount, bufferTime, bufferToggle, bufferWhen,
+  bufferTime,
+  bufferToggle,
+  bufferWhen,
   catchError,
   distinct,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
   map,
-  publishReplay, scan,
-  take, tap
+  scan,
+  take,
+  tap
 } from 'rxjs/operators';
 
 @Component({
@@ -114,9 +106,9 @@ export class Ch03Component implements OnInit {
   bufferCountExample() {
     this.subs.push(
       timer(0, 300).pipe(
-        //bufferCount(3, 3)
-        //bufferCount(2, 3)
-        //bufferCount(3, 2)
+        // bufferCount(3, 3)
+        // bufferCount(2, 3)
+        // bufferCount(3, 2)
         bufferTime(1000)
       ).subscribe(console.log)
     );

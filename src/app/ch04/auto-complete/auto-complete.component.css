@@ -1,0 +1,14 @@
+.results {
+  padding-left: 4px;
+  border: 1px solid #c0c0c0;
+  display: inline-block;
+  width: 150px;
+}
+.results li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.results li:hover{
+  background-color: silver;
+}
