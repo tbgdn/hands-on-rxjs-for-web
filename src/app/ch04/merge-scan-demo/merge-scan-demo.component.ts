@@ -19,7 +19,7 @@ export class MergeScanDemoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    fromEvent(this.loadMoreButton.nativeElement, 'click').pipe(
+    this.subscription = fromEvent(this.loadMoreButton.nativeElement, 'click').pipe(
       mergeScan((prevResponse) => {
         if ('nextIndex' in prevResponse.response) {
           return ajax.get(API_URL + prevResponse.response.nextIndex);

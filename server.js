@@ -71,3 +71,20 @@ app.get('/get-response', function(req, res) {
 app.listen(PORT, function() {
   console.log('Mock back-end is listening on port ' + PORT + '...');
 });
+
+let retryCount = 0;
+
+app.get('/list-data-retry', function(req, res) {
+  if (retryCount < 3){
+    res.status(404).send({
+      message: 'Page not found'
+    })
+  }else{
+    retryCount = 0;
+    res.status(200).send({
+      id: retryCount,
+      message: 'Got data'
+    });
+  }
+  retryCount ++;
+});

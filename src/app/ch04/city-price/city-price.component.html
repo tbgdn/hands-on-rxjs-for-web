@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <h3>zip - combineLatest - withLatestFrom example</h3>
+  </div>
+  <div class="card-body main" *ngIf="widgetsVisibility">
+
+    <app-city-switcher [citiesObject]="citiesObject"></app-city-switcher>
+    <app-coefficient-switcher [coefficientsList]="coefficientsList"></app-coefficient-switcher>
+    <app-price-view></app-price-view>
+
+  </div>
+  <div class="card-body loading" *ngIf="!widgetsVisibility">
+    Loading....
+  </div>
+</div>

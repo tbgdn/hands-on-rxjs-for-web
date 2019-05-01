@@ -16,9 +16,20 @@ import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import { MergeMapDemoComponent } from './ch04/merge-map-demo/merge-map-demo.component';
 import { MergeScanDemoComponent } from './ch04/merge-scan-demo/merge-scan-demo.component';
 import { MergeMapDelayedComponent } from './ch04/merge-map-delayed/merge-map-delayed.component';
+import { CrudDemoComponent } from './ch04/crud-demo/crud-demo.component';
+import { HttpClientService } from './ch04/city-price/http-client.service';
+import { CitySwitcherComponent } from './ch04/city-price/city-switcher/city-switcher.component';
+import { CoefficientSwitcherComponent } from './ch04/city-price/coefficient-switcher/coefficient-switcher.component';
+import { PriceViewComponent } from './ch04/city-price/price-view/price-view.component';
+import { CityPriceComponent } from './ch04/city-price/city-price.component';
+import {citySwitcherReducer} from './ch04/city-price/city-switcher/city-switcher.reducer';
+import {coefficientSwitcherReducer} from './ch04/city-price/coefficient-switcher/coefficient-switcher.reducer';
+import { Ch05Component } from './ch05/ch05.component';
 
 const reducers = {
-  stepValue: StepSwitcherReducer
+  stepValue: StepSwitcherReducer,
+  cityPrice: citySwitcherReducer,
+  coefficient: coefficientSwitcherReducer
 };
 
 @NgModule({
@@ -33,7 +44,13 @@ const reducers = {
     AutoCompleteComponent,
     MergeMapDemoComponent,
     MergeScanDemoComponent,
-    MergeMapDelayedComponent
+    MergeMapDelayedComponent,
+    CrudDemoComponent,
+    CitySwitcherComponent,
+    CoefficientSwitcherComponent,
+    PriceViewComponent,
+    CityPriceComponent,
+    Ch05Component
   ],
   imports: [
     BrowserModule,
@@ -42,7 +59,7 @@ const reducers = {
     HttpClientJsonpModule,
     StoreModule.forRoot(reducers)
   ],
-  providers: [],
+  providers: [HttpClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
